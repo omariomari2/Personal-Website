@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Personal Website</title>
+		<title>Omari's Portfolio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -13,6 +13,7 @@
 		<div id="wrapper">
 			<header id="header" class="alt">
 				<div class="sound">
+					
 					<div class="sound-wave">
 						<div></div>
 						<div></div>
@@ -21,7 +22,7 @@
 						<div></div>
 					</div>
 				</div>
-				<h1 class="hims">Welcome&#x26A1;<br> I'm Omari <br><span id="dive-text" class="dive">Dive Into and Explore My Portfolio<span></span></h1>
+				<h1 class="hims">&#x26A1;Welcome<br> I'm Omari <span class="rocket-animate" title="To Resume" onclick="launchRocket()">🚀</span><br><span id="dive-text" class="dive">Dive Into and Explore My Portfolio<span></span></h1>
 				<p style="color: rgba(241, 234, 234, 0.5); font-family:Arial; margin-top: 0px; margin-bottom: 0px; font-size: 10px;">
 					||Only those who dare to fail greatly can ever achieve greatly||
 				</p>
@@ -67,17 +68,44 @@
 					<div class="project-grid">
 						<div class="project">
 							<span class="icon solid major style1 fa-code"></span>
-							<h3 style="font-family: Arial; font-weight: bolder;">VSN Chrome Extension</h3>
+							<h3 style="font-family: Verdana; font-size: 30px; font-weight: 900;">1. VSN Chrome Extension</h3>
 							<p>Created a Chrome extension to notify users in the USA about the earliest available visa interview slots benefiting 15 users in securing timely appointments.<br>Utilized HTML/CSS, JavaScript, JSON, APIs, and Google Extension Developer Tools</p>
 							<div class="project-buttons">
-								<button onclick="window.open('https://github.com/username/project6', '_blank')">View on GitHub</button>
+								<button onclick="window.open('https://github.com/omariomari2/VSN-Extension.git', '_blank')">View on GitHub</button>
 								<button onclick="window.open('https://demo-link.com/project6', '_blank')">View Demo</button>
 							</div>
 						</div>
 						<div class="project">
 							<span class="icon major style5 fa-gem"></span>
-							<h3 style="font-family: Arial; font-weight: bolder;">Pomodoro Play Extension</h3>
+							<h3 style="font-family: Verdana; font-size: 30px; font-weight: 900;">2. Pomodoro Play Extension</h3>
 							<p>Built a Chrome extension that combines the Pomodoro technique with entertainment. It sets work and break timers, offering fun games during breaks to boost focus and make workspaces more engaging.<br>Developed using HTML/CSS, JavaScript, JSON, and Google Extension Developer Tools.</p>
+							<div class="project-buttons">
+								<button onclick="window.open('https://github.com/omariomari2/Pomodoro-Play.git', '_blank')">View on GitHub</button>
+								<button onclick="window.open('https://demo-link.com/project6', '_blank')">View Demo</button>
+							</div>
+						</div>
+						<div class="project">
+							<span class="icon major style3 fa-copy"></span>
+							<h3 style="font-family: Verdana; font-size: 30px; font-weight: 900;">3. 2048</h3>
+							<p>Developed a 2048 game with Python and Pygame, implementing key mechanics like grid management and tile merging for smooth user interaction.</p>
+							<div class="project-buttons">
+								<button onclick="window.open('https://github.com/omariomari2/2048.git', '_blank')">View on GitHub</button>
+								<button onclick="window.open('https://demo-link.com/project1', '_blank')">View Demo</button>
+							</div>
+						</div>
+						<div class="project">
+							<span class="icon solid major style1 fa-code"></span>
+							<h3 style="font-family: Verdana; font-size: 30px; font-weight: 900;">4. Words Per Minute</h3>
+							<p>Developed a Python-based application to calculate typing speed in words per minute (WPM). This project evaluates typing efficiency and helps users track and improve their speed.</p>
+							<div class="project-buttons">
+								<button onclick="window.open('https://github.com/omariomari2/Words-Per-Minute-.git', '_blank')">View on GitHub</button>
+								<button onclick="window.open('https://demo-link.com/project6', '_blank')">View Demo</button>
+							</div>
+						</div>
+						<div class="project">
+							<span class="icon major style5 fa-gem"></span>
+							<h3 style="font-family: Verdana; font-size: 30px; font-weight: 900;">5. Research Project</h3>
+							<p>An intensive and educative research work to examine workplace monitoring's impact on productivity, satisfaction, and well-being while addressing legal and ethical concerns. It aims to develop a transparent, ethical, and efficient all-in-one solution that fosters trust and balances monitoring with employee rights.</p>
 							<div class="project-buttons">
 								<button onclick="window.open('https://github.com/username/project6', '_blank')">View on GitHub</button>
 								<button onclick="window.open('https://demo-link.com/project6', '_blank')">View Demo</button>
@@ -85,12 +113,12 @@
 						</div>
 						<div class="project">
 							<span class="icon major style3 fa-copy"></span>
-							<h3 style="font-family: Arial; font-weight: bolder;">2048</h3>
-							<p>Developed a 2048 game with Python and Pygame, implementing key mechanics like grid management and tile merging for smooth user interaction.</p>
+							<h3 style="font-family: Verdana; font-size: 30px; font-weight: 900;">More coming up next!</h3>
+							<!-- <p>Developed a 2048 game with Python and Pygame, implementing key mechanics like grid management and tile merging for smooth user interaction.</p>
 							<div class="project-buttons">
 								<button onclick="window.open('https://github.com/username/project1', '_blank')">View on GitHub</button>
 								<button onclick="window.open('https://demo-link.com/project1', '_blank')">View Demo</button>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<div class="project-indicators">
@@ -200,5 +228,14 @@
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
 		<script src="assets/js/new.js"></script>
+		<script>
+			function launchRocket() {
+				const rocket = document.querySelector('.rocket-animate');
+				rocket.classList.add('move');
+				setTimeout(() => {
+					window.open('https://drive.google.com/file/d/1c18eIfpoAz1iyLvhMrELX0Qt0RrSYfNx/view?usp=drive_link', '_blank');
+				}, 1000);
+			}
+		</script>
 	</body>
 </html>
