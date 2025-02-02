@@ -67,4 +67,28 @@ document.addEventListener('DOMContentLoaded', function() {
             updateProjects(currentIndex);
         }
     });
+
+    // Enable scrolling with mouse wheel (left and right only)
+    projectGrid.addEventListener('wheel', (event) => {
+        if (event.deltaX !== 0) {
+            if (event.deltaX < 0) {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : projects.length - 1;
+            } else {
+                currentIndex = (currentIndex < projects.length - 1) ? currentIndex + 1 : 0;
+            }
+            updateProjects(currentIndex);
+            event.preventDefault();
+        }
+    });
+
+    // Rocket launch functionality
+    window.launchRocket = function() {
+        const rocket = document.querySelector('.rocket-animate');
+        rocket.classList.add('move');
+        rocket.addEventListener('transitionend', () => {
+            window.open('https://drive.google.com/file/d/1c18eIfpoAz1iyLvhMrELX0Qt0RrSYfNx/view?usp=drive_link', '_blank');
+        }, { once: true });
+    };
 });
+
+
