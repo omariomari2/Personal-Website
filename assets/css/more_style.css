@@ -1,0 +1,258 @@
+.resumer {
+    background-color: #ff8e3a;
+    color: white;
+    font-size: 15px;
+    font-weight: 900;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer; margin-top: 40px;
+    transition: all 1s;
+}
+
+.resumer:hover {
+    background-color: #ed509e;
+    transform: scale(1.05);
+}
+
+.sound {
+    background-color: transparent;
+    font-size: 12px;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+}
+
+@keyframes audio-wave {
+    0% { height: 20px; transform: translate(0px); background-color: #ff8e3a; }
+    25% { height: 65px; transform: translateY(-5px); background-color: #ed509e; }
+    50% { height: 20px; transform: translateY(0px); background-color: #9c73f8; }
+    100% { height: 0px; transform: translateY(0px); background-color: #0fccce; }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: orange; }
+}
+
+.dive {
+    display: inline-block; /* Allow wrapping */
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 0.15em solid orange; /* Cursor */
+    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+    font-size: 1em; font-family: "Prompt", sans-serif; font-weight: 900;
+}
+
+.cursor {
+    border-right: none; 
+}
+
+.sound-wave {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 6rem;
+    width: 9rem;
+    gap: 0.5rem;
+}
+
+.sound-wave div {
+    width: 1rem;
+    height: 6rem;
+    background-color: orange;
+    animation: audio-wave 2.2s infinite ease-in-out;
+    display: block;
+    border-radius: 0.5rem;
+}
+
+.sound-wave div:nth-child(2) {
+    animation-delay: 0.2s;
+    left: 11px;
+}
+
+.sound-wave div:nth-child(3) {
+    animation-delay: 0.4s;
+    left: 22px;
+}
+
+.sound-wave div:nth-child(4) {
+    animation-delay: 0.6s;
+    left: 33px;
+}
+
+.sound-wave div:nth-child(5) {
+    animation-delay: 0.8s;
+    left: 44px;
+}
+
+.sound-wave:hover div {
+    animation-play-state: initial;
+}
+
+.project-grid {
+    display: flex;
+    overflow-x: hidden;
+    gap: 40px;
+    padding: 20px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+}
+
+.project-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.project-grid .project {
+    flex: 0 0 85%; /* Slightly more longer width */
+    height: 78vh; /* Increased height */
+    border-radius: 10px;
+    padding: 30px; /* Added padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease, box-shadow 0.5s ease; /* Added box-shadow transition */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: center;
+}
+
+.project-grid .project:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper box-shadow on hover */
+}
+
+.project-grid .project:not(:focus) {
+    transform: scale(0.95);
+}
+
+.project-grid .project:focus {
+    transform: scale(1.05);
+}
+
+.project h3 {
+    font-family: 'Georgia', serif;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.project p {
+    font-family: 'Verdana', sans-serif;
+    margin-bottom: 10px;
+}
+
+.project a {
+    color: #333;
+    text-decoration: none;
+    font-family: 'Verdana', sans-serif;
+}
+
+.project a:hover {
+    text-decoration: underline;
+}
+
+.project-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.project-buttons button {
+    font-family: 'Verdana', sans-serif;
+    padding: 10px 20px; /* Adjusted padding */
+    border: none;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center text */
+}
+
+.project-buttons button:hover {
+    background-color: #555;
+}
+
+.project-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.project-indicators .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #ccc;
+    transition: background-color 0.3s;
+}
+
+.project-indicators .dot.active {
+    background-color: #333;
+}
+
+.project-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.project-navigation .prev-button,
+.project-navigation .next-button {
+    padding: 10px 20px; /* Adjusted padding */
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center text */
+}
+
+.project-navigation .prev-button:hover,
+.project-navigation .next-button:hover {
+    background-color: #555;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px; /* Reduced margin-top */
+    justify-content: center; /* Center the buttons */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .project-grid .project {
+        flex: 0 0 100%; /* Full width on small screens */
+        height: auto; /* Adjust height */
+    }
+
+    .project h3 {
+        font-size: 18px; /* Smaller font size */
+    }
+
+    .project p {
+        font-size: 14px; /* Smaller font size */
+    }
+
+    .project-buttons button {
+        padding: 8px 16px; /* Adjusted padding */
+    }
+
+    .project-navigation .prev-button,
+    .project-navigation .next-button {
+        padding: 8px 16px; /* Adjusted padding */
+    }
+}
