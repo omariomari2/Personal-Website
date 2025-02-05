@@ -296,18 +296,58 @@
     overflow-x: auto;  /* Allow horizontal scrolling if needed */
 }
 
+@keyframes wave-animation {
+    0% {
+        background: linear-gradient(45deg, 
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.1) 25%,
+            rgba(255, 255, 255, 0.05) 50%,
+            rgba(255, 255, 255, 0.1) 75%,
+            rgba(255, 255, 255, 0.05) 100%
+        );
+        background-size: 400% 400%;
+        background-position: 0% 50%;
+    }
+    50% {
+        background: linear-gradient(45deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.05) 25%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.05) 75%,
+            rgba(255, 255, 255, 0.1) 100%
+        );
+        background-size: 400% 400%;
+        background-position: 100% 50%;
+    }
+    100% {
+        background: linear-gradient(45deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.1) 25%,
+            rgba(255, 255, 255, 0.05) 50%,
+            rgba(255, 255, 255, 0.1) 75%,
+            rgba(255, 255, 255, 0.05) 100%
+        );
+        background-size: 400% 400%;
+        background-position: 0% 50%;
+    }
+}
+
 .skill {
-    flex: 0 0 auto;  /* Prevent skills from growing or shrinking */
-    min-width: 120px;  /* Minimum width for each skill */
-    max-width: 150px;  /* Maximum width for each skill */
+    flex: 0 0 auto;
+    min-width: 120px;
+    max-width: 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background: rgba(255, 255, 255, 0.05);
     padding: 15px;
     border-radius: 10px;
     transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    animation: wave-animation 4s ease-in-out infinite;
+    backdrop-filter: blur(5px);
 }
 
 .skill:hover {
@@ -329,4 +369,46 @@
 
 .button.primary i {
     margin-right: 8px;  /* Adds space between icon and text */
+}
+
+.spotlight .image {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    border: 2px solid transparent; /* Prepare for glowing border */
+    margin-left: 2em;  /* Add space between image and text */
+}
+
+.spotlight .image:hover {
+    transform: scale(1.05); /* Smaller scale for subtle pop */
+    box-shadow: 0 0 20px #ed509e; /* Match your site's glow color */
+    border-color: #ed509e; /* Glowing border color */
+}
+
+.spotlight .image img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: 300px;
+    transition: transform 0.3s ease;
+}
+
+/* Remove the img transform since we're handling it in the container */
+.spotlight .image:hover img {
+    transform: none;
+}
+
+.spotlight .content {
+    padding-right: 2em;  /* Add padding on the right side of the text */
+}
+
+.spotlight .content p {
+    text-align: justify;
+    line-height: 1.6;
+    hyphens: auto;
+    margin-top: 1.5em;  /* Add space above the paragraph */
 }
