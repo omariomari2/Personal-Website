@@ -139,36 +139,43 @@
 				<section id="second" class="main special">
 					<header class="major">
 						<h2>Skills and Tools</h2>
-						<p>I have hands-on experience with a variety of programming languages and tools, including Python, HTML, CSS, and JavaScript. My coursework and personal projects have given me a solid foundation in web development, cybersecurity principles, and data handling. I’m excited to continue learning and improving my skills as I pursue opportunities in the tech industry.</p>
+						<p>I have hands-on experience with a variety of programming languages and tools, including Python, HTML, CSS, and JavaScript. My coursework and personal projects have given me a solid foundation in web development, cybersecurity principles, and data handling. I'm excited to continue learning and improving my skills as I pursue opportunities in the tech industry.</p>
 					</header>
 					<div class="skillbox">
 						<div class="skill">
 							<img class="logos" src="images/html logo.png" style="width: 3em; padding-top: 10px;">
 							<p style="font-weight: bold; padding-bottom: 0px;">HTML</p>
+							<span class="skill-tooltip">Used HTML in: VSN Chrome Extension, Pomodoro Play Extension</span>
 						</div>
 						<div class="skill">
 							<img class="logos" src="images/logo-css-3-2048.png" style="width: 3em; padding-top: 10px;">
 							<p style="font-weight: bold; padding-bottom: 0px;">CSS</p>
+							<span class="skill-tooltip">Used CSS in: VSN Chrome Extension, Pomodoro Play Extension</span>
 						</div>
 						<div class="skill">
 							<img class="logos" src="images/java.webp" style="width: 3em; padding-top: 10px;">
 							<p style="font-weight: bold; padding-bottom: 0px;">Javascript</p>
+							<span class="skill-tooltip">Used Javascript in: VSN Chrome Extension, Pomodoro Play Extension</span>
+						</div>
+						<div class="skill">
+							<img class="logos" src="images/hack.png" style="width: 3em; padding-top: 10px;">
+							<p style="font-weight: bold; padding-bottom: 0px;">Hack PHP</p>
+							<span class="skill-tooltip">Used Hack PHP in: Research Project</span>
 						</div>
 						<div class="skill">
 							<img class="logos" src="images/mongo.png" style="width: 3em; padding-top: 10px;">
 							<p style="font-weight: bold; padding-bottom: 0px;">MongoDB</p>
+							<span class="skill-tooltip">Used MongoDB in: VSN Chrome Extension</span>
 						</div>
-						<div class="row2" id="python">
+						<div class="skill">
 							<img class="logos" src="images/python-logo.png" style="width: 3em; padding-top: 10px;">
 							<p style="font-weight: bold; padding-bottom: 0px;">Python</p>
+							<span class="skill-tooltip">Used Python in: 2048 Game, Words Per Minute</span>
 						</div>
-						<div class="skill" id="pygame">
+						<div class="skill">
 							<img class="logos" src="images/pygame.webp" style="width: 3em; padding-top: 10px;">
 							<p style="font-weight: bold; padding-bottom: 0px;">PyGame</p>
-						</div>
-						<div class="row2" id="pygame">
-							<img class="logos" src="images/hack.png" style="width: 3em; padding-top: 10px;">
-							<p style="font-weight: bold; padding-bottom: 0px;">Hack PHP</p>
+							<span class="skill-tooltip">Used PyGame in: 2048 Game</span>
 						</div>
 					</div>
 					<p class="content">
@@ -180,11 +187,11 @@
 				<section id="cta" class="main special">
 					<header class="major">
 						<h2>Let's connect and Collaborate!</h2>
-						<p>I am actively seeking opportunities that will expand my knowledge and connect me with like-minded professionals in technology and research. If you have roles, internships, or collaborative projects where a motivated student can contribute and learn, I’d love to connect. Feel free to reach out, and let’s explore ways to create meaningful impact together!</p>
+						<p>I am actively seeking opportunities that will expand my knowledge and connect me with like-minded professionals in technology and research. If you have roles, internships, or collaborative projects where a motivated student can contribute and learn, I'd love to connect. Feel free to reach out, and let's explore ways to create meaningful impact together!</p>
 					</header>
 					<footer class="major">
 						<ul class="actions special">
-							<li><a href="#omari" class="button primary">To Top</a></li>
+							<li><a href="#header" class="button primary"><i class="fas fa-arrow-up"></i> To The Top</a></li>
 						</ul>
 					</footer>
 				</section>
@@ -194,7 +201,7 @@
 			<footer id="footer">
 				<section>
 					<h2>Contact</h2>
-					<p>In fields of cybersecurity, web development, or other areas of computer science, I’m ready to actively bring my skills and enthusiasm to your team. If you’re looking for someone who’s ready to learn and contribute, let’s connect!</p>
+					<p>In fields of cybersecurity, web development, or other areas of computer science, I'm ready to actively bring my skills and enthusiasm to your team. If you're looking for someone who's ready to learn and contribute, let's connect!</p>
 					<ul class="actions">
 						<li><a href="https://drive.google.com/file/d/1c18eIfpoAz1iyLvhMrELX0Qt0RrSYfNx/view?usp=drive_link" class="button">&gt; Resume &lt; </a></li>
 					</ul>
@@ -223,6 +230,22 @@
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/jquery.scrollex.min.js"></script>
 		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script>
+			// Simplified scroll handling
+			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+				anchor.addEventListener('click', function (e) {
+					e.preventDefault();
+					const target = document.querySelector(this.getAttribute('href'));
+					if (target) {
+						target.scrollIntoView({
+							behavior: 'smooth',
+							block: 'start',
+							inline: 'nearest'
+						});
+					}
+				});
+			});
+		</script>
 		<script src="assets/js/browser.min.js"></script>
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
