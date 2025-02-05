@@ -370,8 +370,40 @@
     color: #ffffff;
 }
 
-.button.primary i {
-    margin-right: 8px;  /* Adds space between icon and text */
+.button.primary {
+    position: relative;
+    overflow: visible;  /* Changed from hidden to visible */
+}
+
+.button.primary .icon-up,
+.button.primary .icon-rocket {
+    margin-right: 8px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.button.primary .icon-up {
+    color: white;  /* Changed from orange to white */
+}
+
+.button.primary .icon-rocket {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%) translateY(20px);
+    opacity: 0;
+    color: #ed509e;  /* Keeping the rocket pink */
+}
+
+.button.primary:hover .icon-up {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.button.primary:hover .icon-rocket {
+    opacity: 1;
+    transform: translateY(-50%);  /* Keep it vertically centered */
 }
 
 .spotlight .image {
@@ -450,4 +482,33 @@
     visibility: visible;
     opacity: 1;
     transition-delay: 0.5s;
+}
+
+@keyframes gradient-line {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.major h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, 
+        #ff8e3a, 
+        #ed509e, 
+        #9c73f8, 
+        #0fccce, 
+        #ff8e3a
+    );
+    background-size: 200% 100%;
+    animation: gradient-line 3s ease infinite;
 }
