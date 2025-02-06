@@ -144,13 +144,39 @@
     border-radius: 10px;
     padding: 30px; /* Added padding */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.5s ease, box-shadow 0.5s ease; /* Added box-shadow transition */
-    display: flex;
-    flex-direction: column;
+    transition: transform 0.5s ease, box-shadow 0.5s ease; 
+    display: flex; 
+    flex-direction: column; background-size: contain;
     justify-content: center;
     align-items: center;
     scroll-snap-align: center;
 }
+
+.project-grid .project:nth-child(1){
+    background-image: url(images/projects/extension.png);
+    background-size: contain;
+}
+.project-grid .project:nth-child(2){
+    background-image: url(images/projects/pomodoro.png);
+    background-size: contain;
+}
+
+.project-grid .project:nth-child(4){
+    background-image: url(images/projects/2048.png);
+    background-size: contain;
+}
+
+.project-grid .project:nth-child(5){
+    background-image: url(images/projects/typing.jpg);
+    background-size: contain;
+}
+
+.project-grid .project:nth-child(3){
+    background-image: url(images/projects/research.jpg);
+    background-size: contain;
+}
+
+
 
 .project-grid .project:hover {
     box-shadow: 0 8px 16px #ed509e; /* Deeper box-shadow on hover */
@@ -186,16 +212,15 @@
 }
 
 .project-buttons {
-    display: flex;
-    gap: 10px;
+    display: flex; border-radius: 10px;
+    gap: 10px; background-color: #ff8e3a; 
 }
 
 .project-buttons button {
     font-family: 'Verdana', sans-serif;
     padding: 10px 20px; /* Adjusted padding */
     border: none;
-    background-color: #333;
-    color: #fff;
+    color: black;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -205,7 +230,7 @@
 }
 
 .project-buttons button:hover {
-    background-color: #555;
+    background-color: #ff8e3a;
 }
 
 .project-indicators {
