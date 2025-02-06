@@ -286,16 +286,13 @@
 }
 
 .skillbox {
-    display: flex;  /* Changed from grid to flex */
-    flex-direction: row;
-    flex-wrap: nowrap;  /* Prevent wrapping to new lines */
+    display: flex;
+    flex-wrap: wrap;  /* Allow wrapping on smaller screens */
     justify-content: center;
     gap: 20px;
     padding: 20px;
     margin: 0 auto;
-    overflow-x: auto;  /* Allow horizontal scrolling if needed */
-    overflow: visible !important;  /* Override auto overflow */
-    padding-bottom: 60px;  /* Add space for tooltips */
+    max-width: 1200px;
 }
 
 @keyframes wave-animation {
@@ -335,22 +332,13 @@
 }
 
 .skill {
-    flex: 0 0 auto;
-    min-width: 120px;
-    max-width: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 15px;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
+    flex: 0 0 120px;  /* Fixed width for consistency */
+    min-width: auto;  /* Remove min-width constraint */
+    max-width: none;  /* Remove max-width constraint */
+    padding: 15px 10px;  /* Adjust padding */
+    margin-bottom: 50px;  /* Increased margin to prevent tooltip overlap */
     position: relative;
-    overflow: visible !important;  /* Override any overflow hidden */
-    z-index: 1;  /* Ensure proper stacking context */
-    background: rgba(255, 255, 255, 0.05);
-    animation: wave-animation 4s ease-in-out infinite;
-    backdrop-filter: blur(5px);
+    z-index: 1;
 }
 
 .skill:hover {
@@ -370,8 +358,40 @@
     color: #ffffff;
 }
 
-.button.primary i {
-    margin-right: 8px;  /* Adds space between icon and text */
+.button.primary {
+    position: relative;
+    overflow: visible;  /* Changed from hidden to visible */
+}
+
+.button.primary .icon-up,
+.button.primary .icon-rocket {
+    margin-right: 8px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.button.primary .icon-up {
+    color: white;  /* Changed from orange to white */
+}
+
+.button.primary .icon-rocket {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%) translateY(20px);
+    opacity: 0;
+    color: #ed509e;  /* Keeping the rocket pink */
+}
+
+.button.primary:hover .icon-up {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.button.primary:hover .icon-rocket {
+    opacity: 1;
+    transform: translateY(-50%);  /* Keep it vertically centered */
 }
 
 .spotlight .image {
@@ -419,20 +439,25 @@
 .skill-tooltip {
     visibility: hidden;
     position: absolute;
-    bottom: -40px;  /* Adjusted position */
+    bottom: -50px;  /* Increased distance from icon */
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(237, 80, 158, 0.9);
+    background-color: rgba(45, 45, 45, 0.95);
     color: white;
     padding: 8px 12px;
     border-radius: 6px;
-    font-size: 0.8em;
-    white-space: nowrap;
+    font-size: 0.75em;
     opacity: 0;
     transition: opacity 0.3s, visibility 0.3s;
     z-index: 1000;
-    box-shadow: 0 0 10px rgba(237, 80, 158, 0.5);
-    pointer-events: none;  /* Prevent tooltip from interfering with hover */
+    box-shadow: 0 0 10px rgba(156, 115, 248, 0.3);
+    pointer-events: none;
+    border: 1px solid rgba(237, 80, 158, 0.3);
+    width: max-content;
+    max-width: 250px;  /* Increased max-width */
+    white-space: normal;  /* Allow text wrapping */
+    text-align: center;
+    line-height: 1.4;  /* Improve readability */
 }
 
 .skill-tooltip::before {
@@ -443,11 +468,339 @@
     transform: translateX(-50%);
     border-width: 0 5px 5px 5px;
     border-style: solid;
-    border-color: transparent transparent rgba(237, 80, 158, 0.9) transparent;
+    border-color: transparent transparent rgba(45, 45, 45, 0.95) transparent;  /* Match new background */
 }
 
 .skill:hover .skill-tooltip {
     visibility: visible;
     opacity: 1;
     transition-delay: 0.5s;
+}
+
+@keyframes gradient-line {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.major h2::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, 
+        #ff8e3a, 
+        #ed509e, 
+        #9c73f8, 
+        #0fccce, 
+        #ff8e3a
+    );
+    background-size: 200% 100%;
+    animation: gradient-line 3s ease infinite;
+}
+
+/* Contact Section Layout */
+.contact-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+    padding: 2em;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    max-width: 800px;  /* Increased width */
+    margin: 2em auto;
+    padding: 30px 40px;  /* Increased padding */
+    background: rgba(45, 45, 45, 0.3);
+    border-radius: 6px;  /* Reduced border radius for more rectangular look */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(237, 80, 158, 0.2);
+}
+
+.form-group {
+    margin-bottom: 1.2em;  /* Slightly reduced margin */
+}
+
+.contact-form input,
+.contact-form select {
+    height: 45px;  /* Set consistent height for inputs */
+}
+
+.contact-form textarea {
+    min-height: 120px;  /* Adjusted height */
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid rgba(156, 115, 248, 0.3);
+    border-radius: 4px;  /* Reduced border radius */
+    background: rgba(45, 45, 45, 0.7);
+    color: white;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.submit-btn {
+    position: relative;
+    height: 45px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #ff8e3a, #ed509e);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background: linear-gradient(90deg, #ed509e, #9c73f8);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(237, 80, 158, 0.3);
+}
+
+/* Placeholder styling */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Animation for form elements */
+.form-group {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+.form-group:nth-child(5) { animation-delay: 0.5s; }
+
+/* Responsive adjustments for different screen sizes */
+@media screen and (max-width: 1200px) {
+    .skillbox {
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .skill {
+        flex: 0 0 110px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .skillbox {
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    .skill {
+        flex: 0 0 100px;
+    }
+
+    .skill img {
+        width: 2.5em;  /* Slightly smaller icons on mobile */
+        height: 2.5em;
+    }
+
+    .skill-tooltip {
+        font-size: 0.7em;
+        padding: 6px 10px;
+        bottom: -45px;
+        max-width: 200px;  /* Slightly smaller on mobile */
+    }
+    
+    .skill {
+        margin-bottom: 45px;
+    }
+
+    /* Improve contact form on mobile */
+    .contact-form {
+        padding: 20px;
+        margin: 1em auto;
+    }
+
+    .form-group {
+        margin-bottom: 1em;
+    }
+
+    /* Adjust spotlight section for mobile */
+    .spotlight {
+        flex-direction: column-reverse;  /* Stack image above text on mobile */
+        text-align: center;
+    }
+
+    .spotlight .image {
+        margin: 2em auto;  /* Center image */
+        width: 250px;  /* Slightly smaller on mobile */
+        height: 250px;
+    }
+
+    .spotlight .content {
+        padding-right: 0;  /* Remove padding on mobile */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .skillbox {
+        gap: 8px;
+    }
+    
+    .skill {
+        flex: 0 0 90px;  /* Even smaller on very small screens */
+        padding: 10px 8px;
+    }
+
+    .skill img {
+        width: 2em;
+        height: 2em;
+    }
+
+    .skill p {
+        font-size: 0.9em;
+    }
+
+    /* Adjust project cards for mobile */
+    .project-grid .project {
+        padding: 15px;
+        height: auto;
+    }
+
+    .project h3 {
+        font-size: 1.2em;
+    }
+
+    /* Improve button layout on mobile */
+    .project-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .project-buttons button {
+        width: 100%;
+    }
+
+    .skill-tooltip {
+        font-size: 0.65em;
+        padding: 5px 8px;
+        bottom: -40px;
+        max-width: 180px;
+    }
+    
+    .skill {
+        margin-bottom: 40px;
+    }
+}
+
+/* Improve navigation on mobile */
+@media screen and (max-width: 768px) {
+    #nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    #nav ul li {
+        margin: 5px;
+    }
+}
+
+/* Optimize header for mobile */
+@media screen and (max-width: 480px) {
+    .hims {
+        font-size: 1.5em;  /* Smaller heading on mobile */
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .resumer {
+        width: 80%;  /* Wider buttons on mobile */
+        margin: 5px 0;
+    }
+}
+
+/* Improve form inputs on mobile */
+@media screen and (max-width: 768px) {
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+        font-size: 16px;  /* Prevent zoom on mobile */
+        padding: 8px 12px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        height: 40px;
+    }
+}
+
+.contact-form select {
+    height: 45px;
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid rgba(156, 115, 248, 0.3);
+    border-radius: 4px;
+    background: rgba(45, 45, 45, 0.7);
+    color: rgba(255, 255, 255, 0.5);
+    font-family: inherit;
+    font-size: 0.9em;  /* Reduced font size */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5em;
+}
+
+.contact-form select option {
+    background: rgba(45, 45, 45, 0.9);
+    color: white;
+    padding: 10px;
+    font-size: 0.9em;  /* Match the select font size */
+}
+
+/* Ensure placeholder matches the new size */
+.contact-form select option[value=""][disabled] {
+    font-size: 0.9em;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .contact-form select {
+        font-size: 16px;  /* Prevent zoom on mobile */
+    }
 }

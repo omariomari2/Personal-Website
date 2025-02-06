@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="assets/css/more_style.css" />
 		<link rel="icon" src="favicon.ico" type="image/x-icon">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 	</head>
 	<body class="is-preload">
 		<div id="wrapper">
@@ -41,7 +42,7 @@
 					<li><a href="#intro" class="active">Introduction</a></li>
 					<li><a href="#first">Projects</a></li>
 					<li><a href="#second">Skills</a></li>
-					<li><a href="#cta">Contact</a></li>
+					<li><a href="#contact-form">Contact</a></li>
 				</ul>
 			</nav>
 			<div id="main">
@@ -191,7 +192,11 @@
 					</header>
 					<footer class="major">
 						<ul class="actions special">
-							<li><a href="#header" class="button primary"><i class="fas fa-arrow-up"></i> To The Top</a></li>
+							<li><a href="#header" class="button primary">
+								<i class="fas fa-arrow-up icon-up"></i>
+								<i class="fas fa-rocket icon-rocket"></i>
+								To The Top
+							</a></li>
 						</ul>
 					</footer>
 				</section>
@@ -199,9 +204,38 @@
 
 			<!-- Footer -->
 			<footer id="footer">
-				<section>
+				<section id="contact-form">
 					<h2>Contact</h2>
 					<p>In fields of cybersecurity, web development, or other areas of computer science, I'm ready to actively bring my skills and enthusiasm to your team. If you're looking for someone who's ready to learn and contribute, let's connect!</p>
+					
+					<form class="contact-form" id="contact-form" onsubmit="return sendEmail(event)">
+						<div class="form-group">
+							<input type="text" name="name" id="name" placeholder="Your Name" required>
+						</div>
+						<div class="form-group">
+							<input type="email" name="email" id="email" placeholder="Your Email" required>
+						</div>
+						<div class="form-group">
+							<select name="inquiry_type" id="inquiry_type" required>
+								<option value="" disabled selected>Type of Inquiry</option>
+								<option value="job">Job Opportunity</option>
+								<option value="collaboration">Project Collaboration</option>
+								<option value="mentorship">Mentorship</option>
+								<option value="other">Other</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<input type="text" name="company" id="company" placeholder="Company Name (Optional)">
+						</div>
+						<div class="form-group">
+							<textarea name="message" id="message" placeholder="Your Message" required></textarea>
+						</div>
+						<button type="submit" class="submit-btn">
+							<span class="default-text">Send Message</span>
+							<span class="loading-text" style="display: none;">Sending...</span>
+						</button>
+					</form>
+					
 					<ul class="actions">
 						<li><a href="https://drive.google.com/file/d/1c18eIfpoAz1iyLvhMrELX0Qt0RrSYfNx/view?usp=drive_link" class="button">&gt; Resume &lt; </a></li>
 					</ul>
@@ -258,6 +292,58 @@
 				setTimeout(() => {
 					window.open('https://drive.google.com/file/d/1c18eIfpoAz1iyLvhMrELX0Qt0RrSYfNx/view?usp=drive_link', '_blank');
 				}, 1000);
+			}
+		</script>
+		<script type="text/javascript">
+			// Initialize EmailJS with your user ID
+			(function() {
+				emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+			})();
+
+			function sendEmail(event) {
+				event.preventDefault();
+
+				// Get the button and its text elements
+				const submitBtn = document.querySelector('.submit-btn');
+				const defaultText = submitBtn.querySelector('.default-text');
+				const loadingText = submitBtn.querySelector('.loading-text');
+
+				// Show loading state
+				submitBtn.disabled = true;
+				defaultText.style.display = 'none';
+				loadingText.style.display = 'inline';
+
+				// Get form data
+				const templateParams = {
+					from_name: document.getElementById('name').value,
+					from_email: document.getElementById('email').value,
+					inquiry_type: document.getElementById('inquiry_type').value,
+					company: document.getElementById('company').value,
+					message: document.getElementById('message').value
+				};
+
+				// Send email using EmailJS
+				emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+					.then(function(response) {
+						console.log('SUCCESS!', response.status, response.text);
+						
+						// Show success message
+						alert('Message sent successfully!');
+						
+						// Reset form
+						document.getElementById('contact-form').reset();
+					}, function(error) {
+						console.log('FAILED...', error);
+						alert('Failed to send message. Please try again.');
+					})
+					.finally(function() {
+						// Reset button state
+						submitBtn.disabled = false;
+						defaultText.style.display = 'inline';
+						loadingText.style.display = 'none';
+					});
+
+				return false;
 			}
 		</script>
 	</body>
