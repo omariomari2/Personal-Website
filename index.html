@@ -301,9 +301,9 @@
 			}
 		</script>
 		<script type="text/javascript">
-			// Initialize EmailJS with your user ID
+			// Initialize EmailJS with your public key
 			(function() {
-				emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+				emailjs.init("ySHgOCav0GR7JaPsb"); // Replace with your EmailJS public key
 			})();
 
 			function sendEmail(event) {
@@ -328,18 +328,24 @@
 					message: document.getElementById('message').value
 				};
 
+				// Before sending the email, log the templateParams to ensure they are correct
+				console.log('Template Params:', templateParams);
+
 				// Send email using EmailJS
-				emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+				emailjs.send('service_kx1wd3a', 'template_53z1ra5', templateParams)
 					.then(function(response) {
 						console.log('SUCCESS!', response.status, response.text);
-						
 						// Show success message
 						alert('Message sent successfully!');
-						
 						// Reset form
-						document.getElementById('contact-form').reset();
+						const formElement = document.getElementById('contact-form');
+						if (formElement && typeof formElement.reset === 'function') {
+							formElement.reset();
+						} else {
+							console.error('Form element not found or reset method not available');
+						}
 					}, function(error) {
-						console.log('FAILED...', error);
+						console.error('FAILED...', error);
 						alert('Failed to send message. Please try again.');
 					})
 					.finally(function() {
