@@ -1,0 +1,52 @@
+.project-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.project-icon i {
+    font-size: 3em;
+    color: #646464;
+    background: linear-gradient(45deg, #e6e6e6, #ffffff);
+    padding: 20px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.project-icon:hover {
+    transform: translateY(-5px);
+}
+
+.project-icon:hover i {
+    color: #2a2a2a;
+    background: linear-gradient(45deg, #ffffff, #f0f0f0);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom colors for specific icons */
+.fa-church {
+    color: #4a4a4a !important;
+}
+
+.fa-shield-alt {
+    color: #2d5ba3 !important;
+}
+
+.fa-stopwatch {
+    color: #e74c3c !important;
+}
+
+.fa-users {
+    color: #3498db !important;
+}
+
+.fa-keyboard {
+    color: #2ecc71 !important;
+}
+
+.fa-folder-open {
+    color: #f39c12 !important;
+}
