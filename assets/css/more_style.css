@@ -140,43 +140,26 @@
 
 .project-grid .project {
     flex: 0 0 85%; /* Slightly more longer width */
-    height: 78vh; /* Increased height */
+    height: 420px; /* Reduced from 78vh */
     border-radius: 10px;
     padding: 30px; /* Added padding */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s ease, box-shadow 0.5s ease; 
     display: flex; 
-    flex-direction: column; background-size: contain;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     scroll-snap-align: center;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-.project-grid .project:nth-child(1){
-    background-image: url(images/projects/extension.png);
-    background-size: contain;
+.project-grid .project:nth-child(1),
+.project-grid .project:nth-child(2),
+.project-grid .project:nth-child(3),
+.project-grid .project:nth-child(4),
+.project-grid .project:nth-child(5) {
+    background-image: none;
 }
-.project-grid .project:nth-child(2){
-    background-image: url(images/projects/pomodoro.png);
-    background-size: contain;
-}
-
-.project-grid .project:nth-child(4){
-    background-image: url(images/projects/2048.png);
-    background-size: contain;
-}
-
-.project-grid .project:nth-child(5){
-    background-image: url(images/projects/typing.jpg);
-    background-size: contain;
-}
-
-.project-grid .project:nth-child(3){
-    background-image: url(images/projects/research.jpg);
-    background-size: contain;
-}
-
-
 
 .project-grid .project:hover {
     box-shadow: 0 8px 16px #ed509e; /* Deeper box-shadow on hover */
@@ -212,25 +195,83 @@
 }
 
 .project-buttons {
-    display: flex; border-radius: 10px;
-    gap: 10px; background-color: #ff8e3a; 
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .project-buttons button {
-    font-family: 'Verdana', sans-serif;
-    padding: 10px 20px; /* Adjusted padding */
-    border: none;
-    color: black;
+    font-family: 'Poppins', sans-serif;
+    padding: 12px 24px;
+    border: 2px solid transparent;
+    background: linear-gradient(90deg, transparent 50%, #ff8e3a 50%);
+    background-size: 200% 100%;
+    color: #ffffff;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center text */
+    justify-content: center;
+    min-width: 140px;
+    box-shadow: 0 2px 4px rgba(255, 142, 58, 0.1);
+}
+
+.project-buttons button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, #ff8e3a, #ed509e);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
 }
 
 .project-buttons button:hover {
-    background-color: #ff8e3a;
+    color: #ffffff;
+    transform: translateY(-3px) scale(1.02);
+    background-position: -100% 0;
+    box-shadow: 0 8px 20px rgba(255, 142, 58, 0.2);
+    border-color: rgba(255, 142, 58, 0.5);
+}
+
+.project-buttons button:hover::before {
+    opacity: 1;
+}
+
+.project-buttons button:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 4px 8px rgba(255, 142, 58, 0.15);
+}
+
+@media (max-width: 768px) {
+    .project-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .project-buttons button {
+        width: 100%;
+        padding: 10px 20px;
+        font-size: 12px;
+    }
 }
 
 .project-indicators {
@@ -285,7 +326,6 @@
     justify-content: center; /* Center the buttons */
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .project-grid .project {
         flex: 0 0 100%; /* Full width on small screens */
@@ -300,13 +340,15 @@
         font-size: 14px; /* Smaller font size */
     }
 
-    .project-buttons button {
-        padding: 8px 16px; /* Adjusted padding */
+    .project-buttons {
+        flex-direction: column;
+        gap: 10px;
     }
 
-    .project-navigation .prev-button,
-    .project-navigation .next-button {
-        padding: 8px 16px; /* Adjusted padding */
+    .project-buttons button {
+        width: 100%;
+        padding: 10px 20px;
+        font-size: 12px;
     }
 }
 
@@ -714,7 +756,7 @@
     /* Adjust project cards for mobile */
     .project-grid .project {
         padding: 15px;
-        height: auto;
+        height: 70vh;
     }
 
     .project h3 {

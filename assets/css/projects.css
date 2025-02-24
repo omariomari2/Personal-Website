@@ -1,0 +1,71 @@
+/* General styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* Project styles */
+.project {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+/* Project skills styling */
+.project-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.project-skill-tag {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.project-skill-tag:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Add icons to skill tags */
+.project-skill-tag::before {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.project-skill-tag[data-skill="HTML/CSS"]::before {
+    content: "\f13b"; /* HTML5 icon */
+}
+
+.project-skill-tag[data-skill="JavaScript"]::before {
+    content: "\f3b8"; /* JS icon */
+}
+
+.project-skill-tag[data-skill="Python"]::before {
+    content: "\f3e2"; /* Python icon */
+}
+
+.project-skill-tag[data-skill="Firebase"]::before,
+.project-skill-tag[data-skill="Firebase Auth"]::before {
+    content: "\f1eb"; /* Database icon */
+}
+
+/* Add more skill-specific icons as needed */
