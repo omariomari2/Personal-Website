@@ -3795,3 +3795,18 @@ body.is-preload #header.alt .logo {
 		max-width: 100%;
 	}
 }
+
+.project-buttons {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.project-buttons button {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.project-buttons button:hover {
+    transform: scale(1.05);
+    background-color: #f0f0f0;
+}
