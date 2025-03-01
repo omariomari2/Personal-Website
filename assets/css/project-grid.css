@@ -2,7 +2,7 @@
 .project-details-grid {
     display: flex;
     overflow-x: hidden;
-    gap: 40px;
+    gap: 40px; font-size: 14px;
     padding: 20px 0;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -20,7 +20,7 @@
     opacity: 0;
     transform: translateX(100%);
     transition: opacity 0.5s ease, transform 0.5s ease;
-    display: none;
+    display: none; text-align: left;
 }
 
 .project-detail.active {
@@ -52,10 +52,16 @@
 .project-detail-info h3 {
     font-family: 'Verdana', sans-serif;
     font-size: 30px;
-    font-weight: 900;
-    color: #ffffff;
-    margin: 0;
+    font-weight: 900; text-align: center;
+    color: #ffffff; transition: all 0.5s ease;
+    margin: 0; text-decoration: underline
 }
+
+.project-detail-info h3:hover {
+    color: linear-gradient(45deg, #ff8e3a, #ed509e, #9c73f8, #0fccce);
+}
+
+
 
 .project-detail-info p {
     font-family: 'Poppins', sans-serif;
@@ -89,7 +95,7 @@
     padding-top: 15px;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 10px; place-content: center;
 }
 
 .project-skill-tag {
@@ -111,12 +117,11 @@
 .project-details-navigation {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 0px; 
 }
 
 .project-details-navigation button {
     font-family: 'Poppins', sans-serif;
-    padding: 12px 24px;
     border: 2px solid transparent;
     background: linear-gradient(90deg, transparent 50%, #ff8e3a 50%);
     background-size: 200% 100%;
@@ -152,9 +157,9 @@
 
 .detail-dot {
     width: 10px;
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
+    height: 10px; margin-bottom: 10px;
+    background-color: rgba(172, 15, 15, 0.3);
+    border-radius: 50%; 
     cursor: pointer;
     transition: all 0.3s ease;
 }
