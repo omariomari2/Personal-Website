@@ -49,7 +49,7 @@
     --project-shadow: #666666;
     --dot-color: #666;
     --dot-active-color: #ffffff;
-    --body-gradient: none;
+    --body-gradient: linear-gradient(45deg, #333333, #666666, #999999);
 }
 
 /* Additional dark mode specific styles */

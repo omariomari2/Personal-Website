@@ -125,10 +125,32 @@ body {
 	background-color: var(--body-bg, #000000);
 	color: var(--text-color, rgba(255, 255, 255, 0.85));
 	background-image: var(--body-gradient, linear-gradient(45deg, #efa8b0, #a89cc8, #8cc9f0));
-	background-size: cover;
+	background-size: 400% 400%;
 	background-attachment: fixed;
+	animation: gradient-animation 15s ease infinite, pulse 5s ease-in-out infinite alternate;
 	-webkit-text-size-adjust: none;
 	-ms-overflow-style: scrollbar;
+}
+
+@keyframes gradient-animation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes pulse {
+	0% {
+		background-size: 400% 400%;
+	}
+	100% {
+		background-size: 300% 300%;
+	}
 }
 
 ol, ul {
