@@ -200,6 +200,98 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1000);
         }, { once: true });
     }
+
+    // Project Description Toggle
+    const projectDescriptions = document.querySelectorAll('.project-detail-info');
+    
+    projectDescriptions.forEach(projectInfo => {
+        // Get the project description (text between h3 and the first div)
+        const title = projectInfo.querySelector('h3');
+        if (!title) return;
+        
+        // Get all text nodes between h3 and the skills div
+        let descriptionText = '';
+        let currentNode = title.nextSibling;
+        const skillsDiv = projectInfo.querySelector('.project-skills');
+        
+        while (currentNode && currentNode !== skillsDiv) {
+            if (currentNode.nodeType === Node.TEXT_NODE) {
+                descriptionText += currentNode.textContent;
+            } else if (currentNode.tagName === 'BR') {
+                descriptionText += ' ';
+            }
+            currentNode = currentNode.nextSibling;
+        }
+        
+        // Clean up the description text
+        descriptionText = descriptionText.trim();
+        
+        // If description is long enough to truncate
+        if (descriptionText.length > 100) {
+            // Create short and full versions
+            const shortDescription = descriptionText.substring(0, 100) + '...';
+            const fullDescription = descriptionText;
+            
+            // Remove existing text nodes
+            currentNode = title.nextSibling;
+            while (currentNode && currentNode !== skillsDiv) {
+                const nextNode = currentNode.nextSibling;
+                if (currentNode.nodeType === Node.TEXT_NODE || currentNode.tagName === 'BR') {
+                    projectInfo.removeChild(currentNode);
+                }
+                currentNode = nextNode;
+            }
+            
+            // Create container for the description
+            const descriptionContainer = document.createElement('div');
+            descriptionContainer.className = 'project-description';
+            descriptionContainer.style.fontSize = '1.2em'; // Match the CSS font size
+            
+            // Add short description
+            const shortDescriptionElement = document.createElement('span');
+            shortDescriptionElement.className = 'short-description';
+            shortDescriptionElement.textContent = shortDescription;
+            descriptionContainer.appendChild(shortDescriptionElement);
+            
+            // Add full description (hidden initially)
+            const fullDescriptionElement = document.createElement('span');
+            fullDescriptionElement.className = 'full-description';
+            fullDescriptionElement.style.display = 'none';
+            fullDescriptionElement.textContent = fullDescription;
+            descriptionContainer.appendChild(fullDescriptionElement);
+            
+            // Add toggle button
+            const toggleButton = document.createElement('button');
+            toggleButton.className = 'description-toggle';
+            toggleButton.textContent = 'Read More';
+            toggleButton.style.background = 'none';
+            toggleButton.style.border = 'none';
+            toggleButton.style.color = '#64ffda';
+            toggleButton.style.cursor = 'pointer';
+            toggleButton.style.fontWeight = 'bold';
+            toggleButton.style.marginLeft = '5px';
+            toggleButton.style.padding = '0';
+            toggleButton.style.fontSize = '1em'; // Slightly smaller than description text
+            
+            // Toggle functionality
+            toggleButton.addEventListener('click', () => {
+                const shortDesc = descriptionContainer.querySelector('.short-description');
+                const fullDesc = descriptionContainer.querySelector('.full-description');
+                
+                if (fullDesc.style.display === 'none') {
+                    shortDesc.style.display = 'none';
+                    fullDesc.style.display = 'inline';
+                    toggleButton.textContent = 'Read Less';
+                } else {
+                    shortDesc.style.display = 'inline';
+                    fullDesc.style.display = 'none';
+                    toggleButton.textContent = 'Read More';
+                }
+            });
+            
+            // Insert the new elements after the title
+            projectInfo.insertBefore(descriptionContainer, skillsDiv);
+            projectInfo.insertBefore(toggleButton, skillsDiv);
+        }
+    });
 });
-
-
