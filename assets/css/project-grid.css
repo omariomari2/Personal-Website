@@ -8,6 +8,7 @@
     -ms-overflow-style: none;
     scroll-snap-type: x mandatory;
     width: 100%;
+    background-color: var(--project-bg, rgba(50, 50, 50, 0.5));
 }
 
 .project-details-grid::-webkit-scrollbar {
@@ -35,10 +36,11 @@
     gap: 20px;
     padding: 15px;
     margin: 0;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--project-bg, rgba(50, 50, 50, 0.5));
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--box-shadow-color, rgba(0, 0, 0, 0.1));
     height: 100%;
+    border: var(--project-border, 1px solid rgba(255, 255, 255, 0.2));
 }
 
 .project-detail-info {
@@ -53,15 +55,14 @@
     font-family: 'Verdana', sans-serif;
     font-size: 30px;
     font-weight: 900; text-align: center;
-    color: #ffffff; transition: all 0.5s ease;
+    color: var(--heading-color, #ffffff); 
+    transition: all 0.5s ease;
     margin: 0; text-decoration: underline
 }
 
 .project-detail-info h3:hover {
     color: linear-gradient(45deg, #ff8e3a, #ed509e, #9c73f8, #0fccce);
 }
-
-
 
 .project-detail-info p {
     font-family: 'Poppins', sans-serif;
@@ -82,7 +83,7 @@
     border-radius: 8px;
     object-fit: cover;
     aspect-ratio: 16/9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px var(--box-shadow-color, rgba(0, 0, 0, 0.2));
     transition: transform 0.3s ease;
 }
 
@@ -99,18 +100,20 @@
 }
 
 .project-skill-tag {
-    background: linear-gradient(45deg, #ff8e3a, #ed509e);
+    background: var(--skill-tag-bg, #333333);
     color: white;
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.9em;
     transition: all 0.3s ease;
     cursor: default;
+    border: var(--project-border, 1px solid rgba(255, 255, 255, 0.3));
 }
 
 .project-skill-tag:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(237, 80, 158, 0.3);
+    background: var(--skill-tag-hover-bg, #666666);
+    box-shadow: 0 4px 8px var(--box-shadow-color, rgba(0, 0, 0, 0.3));
 }
 
 /* Navigation Styling */
@@ -125,7 +128,7 @@
     border: 2px solid transparent;
     background: linear-gradient(90deg, transparent 50%, #ff8e3a 50%);
     background-size: 200% 100%;
-    color: #ffffff;
+    color: var(--text-color, rgba(255, 255, 255, 0.85));
     cursor: pointer;
     border-radius: 8px;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -136,18 +139,18 @@
     position: relative;
     overflow: hidden;
     min-width: 140px;
+    padding: 0.5em 1em;
+    border: var(--project-border, 1px solid rgba(255, 255, 255, 0.3));
+    background: var(--project-bg, #333333);
 }
 
 .project-details-navigation button:hover {
-    background-position: -100% 0;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(255, 142, 58, 0.2);
+    background: var(--skill-tag-hover-bg, #666666);
 }
 
 .project-details-navigation button:active {
-    transform: translateY(-1px);
+    transform: translateY(2px);
 }
-
 
 .project-details-indicators {
     display: flex;

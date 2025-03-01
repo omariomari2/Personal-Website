@@ -1,0 +1,132 @@
+:root {
+    --body-bg: transparent;
+    --text-color: rgba(255, 255, 255, 0.65);
+    --heading-color: #ffffff;
+    --button-bg: #ff8e3a;
+    --button-hover-bg: #ed509e;
+    --skill-tag-bg: linear-gradient(45deg, #ff8e3a, #ed509e);
+    --skill-tag-hover-bg: rgba(255, 255, 255, 0.3);
+    --project-bg: rgba(255, 255, 255, 0.1);
+    --project-border: none;
+    --icon-bg: linear-gradient(45deg, #ff8e3a, #ed509e);
+    --icon-hover-bg: linear-gradient(45deg, #ed509e, #9c73f8);
+    --animation-color-1: #ff8e3a;
+    --animation-color-2: #ed509e;
+    --animation-color-3: #9c73f8;
+    --animation-color-4: #0fccce;
+    --cursor-color: orange;
+    --box-shadow-color: rgba(237, 80, 158, 0.3);
+    --gradient-line: linear-gradient(90deg, #ff8e3a, #ed509e, #9c73f8, #0fccce, #ff8e3a);
+    --submit-btn-bg: linear-gradient(90deg, #ff8e3a, #ed509e);
+    --submit-btn-hover-bg: linear-gradient(90deg, #ed509e, #9c73f8);
+    --project-shadow: #ed509e;
+    --dot-color: #ccc;
+    --dot-active-color: #ff8e3a;
+    --body-gradient: linear-gradient(45deg, #efa8b0, #a89cc8, #8cc9f0);
+}
+
+[data-theme="dark"] {
+    --body-bg: #000000;
+    --text-color: rgba(255, 255, 255, 0.85);
+    --heading-color: #ffffff;
+    --button-bg: #333333;
+    --button-hover-bg: #666666;
+    --skill-tag-bg: #333333;
+    --skill-tag-hover-bg: #666666;
+    --project-bg: rgba(50, 50, 50, 0.5);
+    --project-border: 1px solid rgba(255, 255, 255, 0.2);
+    --icon-bg: #333333;
+    --icon-hover-bg: #666666;
+    --animation-color-1: #333333;
+    --animation-color-2: #666666;
+    --animation-color-3: #999999;
+    --animation-color-4: #cccccc;
+    --cursor-color: white;
+    --box-shadow-color: rgba(0, 0, 0, 0.3);
+    --gradient-line: linear-gradient(90deg, #333333, #666666, #999999, #cccccc, #333333);
+    --submit-btn-bg: linear-gradient(90deg, #333333, #666666);
+    --submit-btn-hover-bg: linear-gradient(90deg, #666666, #999999);
+    --project-shadow: #666666;
+    --dot-color: #666;
+    --dot-active-color: #ffffff;
+    --body-gradient: none;
+}
+
+/* Additional dark mode specific styles */
+[data-theme="dark"] .project-detail-info {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .project-detail-info h3 {
+    color: #000000;
+}
+
+[data-theme="dark"] .project-buttons button {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .read-more-btn {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .project-details-navigation button {
+    color: #ffffff;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 5px;
+    z-index: 9999;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50%;
+    background: var(--button-bg);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 0 !important;
+    overflow: hidden;
+    min-width: unset !important;
+    min-height: unset !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+    line-height: 1;
+    margin: 0 !important;
+    outline: none !important;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    background: var(--button-hover-bg);
+}
+
+.theme-toggle i {
+    font-size: 14px;
+    width: auto;
+    height: auto;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        width: 28px !important;
+        height: 28px !important;
+        max-width: 28px !important;
+        max-height: 28px !important;
+    }
+    
+    .theme-toggle i {
+        font-size: 12px;
+    }
+}

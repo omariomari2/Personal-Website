@@ -1,16 +1,17 @@
 .resumer {
-    background-color: #ff8e3a;
+    background-color: var(--button-bg, #333333);
     color: white;
     font-size: 15px;
     font-weight: 900;
-    border: none;
+    border: var(--project-border, 1px solid rgba(255, 255, 255, 0.3));
     border-radius: 15px;
-    cursor: pointer; margin-top: 40px;
-    transition: all 1s;
+    cursor: pointer; 
+    margin-top: 40px;
+    transition: all 0.5s;
 }
 
 .resumer:hover {
-    background-color: #ed509e;
+    background-color: var(--button-hover-bg, #666666);
     transform: scale(1.05);
 }
 
@@ -25,10 +26,10 @@
 }
 
 @keyframes audio-wave {
-    0% { height: 20px; transform: translate(0px); background-color: #ff8e3a; }
-    25% { height: 65px; transform: translateY(-5px); background-color: #ed509e; }
-    50% { height: 20px; transform: translateY(0px); background-color: #9c73f8; }
-    100% { height: 0px; transform: translateY(0px); background-color: #0fccce; }
+    0% { height: 20px; transform: translate(0px); background-color: var(--animation-color-1, #333333); }
+    25% { height: 65px; transform: translateY(-5px); background-color: var(--animation-color-2, #666666); }
+    50% { height: 20px; transform: translateY(0px); background-color: var(--animation-color-3, #999999); }
+    100% { height: 0px; transform: translateY(0px); background-color: var(--animation-color-4, #cccccc); }
 }
 
 @keyframes typing {
@@ -38,26 +39,14 @@
 
 @keyframes blink-caret {
     from, to { border-color: transparent; }
-    50% { border-color: orange; }
-}
-
-@keyframes rocket-animation {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+    50% { border-color: var(--cursor-color, white); }
 }
 
 .dive {
     display: inline; /* Changed from inline-block to inline */
     overflow: hidden;
     white-space: normal; /* Allow wrapping */
-    border-right: 0.15em solid orange; /* Cursor */
+    border-right: 0.15em solid var(--cursor-color, white); /* Cursor */
     animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
     font-size: 1em; font-family: "Prompt", sans-serif; font-weight: 900;
 }
@@ -94,7 +83,7 @@
 .sound-wave div {
     width: 1rem;
     height: 6rem;
-    background-color: orange;
+    background-color: var(--animation-color-1, white);
     animation: audio-wave 2.2s infinite ease-in-out;
     display: block;
     border-radius: 0.5rem;
@@ -162,7 +151,7 @@
 }
 
 .project-grid .project:hover {
-    box-shadow: 0 8px 16px #ed509e; /* Deeper box-shadow on hover */
+    box-shadow: 0 8px 16px var(--project-shadow, #666666); /* Deeper box-shadow on hover */
 }
 
 .project-grid .project:not(:focus) {
@@ -185,7 +174,7 @@
 }
 
 .project a {
-    color: #333;
+    color: var(--text-color, #333);
     text-decoration: none;
     font-family: 'Verdana', sans-serif;
 }
@@ -211,9 +200,9 @@
 .project-buttons button {
     font-family: 'Poppins', sans-serif;
     border: 2px solid transparent;
-    background: linear-gradient(90deg, transparent 50%, #ff8e3a 50%);
+    background: linear-gradient(90deg, transparent 50%, var(--button-bg, #333333) 50%);
     background-size: 200% 100%;
-    color: #ffffff;
+    color: var(--text-color, #ffffff);
     cursor: pointer;
     border-radius: 8px;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -222,7 +211,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     position: relative;
-    overflow: hidden;
+    overflow: visible;  /* Changed from hidden to visible */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -237,18 +226,18 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(120deg, #ff8e3a, #ed509e);
+    background: linear-gradient(120deg, var(--button-bg, #333333), var(--button-hover-bg, #666666));
     opacity: 0;
     transition: opacity 0.5s ease;
     z-index: -1;
 }
 
 .project-buttons button:hover {
-    color: #ffffff;
+    color: var(--text-color, #ffffff);
     transform: translateY(-3px) scale(1.02);
     background-position: -100% 0;
-    box-shadow: 0 8px 20px rgba(255, 142, 58, 0.2);
-    border-color: rgba(255, 142, 58, 0.5);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.5);
 }
 
 .project-buttons button:hover::before {
@@ -257,7 +246,7 @@
 
 .project-buttons button:active {
     transform: translateY(-1px) scale(0.98);
-    box-shadow: 0 4px 8px rgba(255, 142, 58, 0.15);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 768px) {
@@ -284,12 +273,12 @@
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: #ccc;
+    background-color: var(--dot-color, #ccc);
     transition: background-color 0.3s;
 }
 
 .project-indicators .dot.active {
-    background-color: #333;
+    background-color: var(--dot-active-color, #333);
 }
 
 .project-navigation {
@@ -302,8 +291,8 @@
 .project-navigation .prev-button,
 .project-navigation .next-button {
     padding: 10px 20px; /* Adjusted padding */
-    background-color: #333;
-    color: #fff;
+    background-color: var(--button-bg, #333);
+    color: var(--text-color, #fff);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -315,7 +304,7 @@
 
 .project-navigation .prev-button:hover,
 .project-navigation .next-button:hover {
-    background-color: #555;
+    background-color: var(--button-hover-bg, #666);
 }
 
 .button-group {
@@ -421,7 +410,7 @@
 .skill p {
     margin: 0;
     font-weight: bold;
-    color: #ffffff;
+    color: var(--text-color, #ffffff);
 }
 
 .button.primary {
@@ -438,7 +427,7 @@
 }
 
 .button.primary .icon-up {
-    color: white;  /* Changed from orange to white */
+    color: var(--text-color, white);  /* Changed from orange to white */
 }
 
 .button.primary .icon-rocket {
@@ -447,7 +436,7 @@
     top: 50%;
     transform: translateY(-50%) translateY(20px);
     opacity: 0;
-    color: #ed509e;  /* Keeping the rocket pink */
+    color: var(--button-hover-bg, #666);  /* Keeping the rocket gray */
 }
 
 .button.primary:hover .icon-up {
@@ -473,8 +462,8 @@
 
 .spotlight .image:hover {
     transform: scale(1.05); /* Smaller scale for subtle pop */
-    box-shadow: 0 0 20px #ed509e; /* Match your site's glow color */
-    border-color: #ed509e; /* Glowing border color */
+    box-shadow: 0 0 20px var(--project-shadow, #666); /* Match your site's glow color */
+    border-color: var(--project-shadow, #666); /* Glowing border color */
 }
 
 .spotlight .image img {
@@ -509,7 +498,7 @@
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(45, 45, 45, 0.95);
-    color: white;
+    color: var(--text-color, white);
     padding: 8px 12px;
     border-radius: 6px;
     font-size: 0.75em;
@@ -562,11 +551,11 @@
     height: 1px;
     margin-top: 10px;
     background: linear-gradient(90deg, 
-        #ff8e3a, 
-        #ed509e, 
-        #9c73f8, 
-        #0fccce, 
-        #ff8e3a
+        var(--button-bg, #333333), 
+        var(--button-hover-bg, #666666), 
+        var(--animation-color-3, #999999), 
+        var(--animation-color-4, #cccccc), 
+        var(--button-bg, #333333)
     );
     background-size: 200% 100%;
     animation: gradient-line 3s ease infinite;
@@ -613,7 +602,7 @@
     border: 1px solid rgba(156, 115, 248, 0.3);
     border-radius: 4px;  /* Reduced border radius */
     background: rgba(45, 45, 45, 0.7);
-    color: white;
+    color: var(--text-color, white);
     font-family: inherit;
     transition: all 0.3s ease;
 }
@@ -622,8 +611,8 @@
     position: relative;
     height: 45px;
     margin-top: 10px;
-    background: linear-gradient(90deg, #ff8e3a, #ed509e);
-    color: white;
+    background: linear-gradient(90deg, var(--button-bg, #333333), var(--button-hover-bg, #666666));
+    color: var(--text-color, white);
     border: none;
     border-radius: 6px;
     font-weight: bold;
@@ -637,9 +626,9 @@
 }
 
 .submit-btn:hover:not(:disabled) {
-    background: linear-gradient(90deg, #ed509e, #9c73f8);
+    background: linear-gradient(90deg, var(--button-hover-bg, #666666), var(--animation-color-3, #999999));
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(237, 80, 158, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Placeholder styling */
@@ -854,7 +843,7 @@
 
 .contact-form select option {
     background: rgba(45, 45, 45, 0.9);
-    color: white;
+    color: var(--text-color, white);
     padding: 10px;
     font-size: 0.9em;  /* Match the select font size */
 }

@@ -3,12 +3,12 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: var(--body-bg, #000000);
 }
 
 /* Project styles */
 .project {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: var(--project-bg, rgba(50, 50, 50, 0.5));
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -17,6 +17,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.3s ease;
+    border: var(--project-border, 1px solid rgba(255, 255, 255, 0.2));
 }
 
 /* Project skills styling */
@@ -28,7 +29,7 @@ body {
 }
 
 .project-skill-tag {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: var(--skill-tag-bg, #333333);
     color: #fff;
     padding: 4px 12px;
     border-radius: 16px;
@@ -37,10 +38,11 @@ body {
     align-items: center;
     gap: 6px;
     transition: all 0.3s ease;
+    border: var(--project-border, 1px solid rgba(255, 255, 255, 0.3));
 }
 
 .project-skill-tag:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: var(--skill-tag-hover-bg, #666666);
     transform: translateY(-2px);
 }
 

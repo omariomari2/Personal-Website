@@ -1,52 +1,63 @@
 .project-icon {
-    display: flex;
-    justify-content: center;
+    display: inline-flex;
     align-items: center;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #ffffff;
+    background: var(--icon-bg, #333333);
+    box-shadow: 0 4px 8px var(--box-shadow-color, rgba(0, 0, 0, 0.3));
+    transition: all 0.3s ease;
+    border: var(--project-border, 1px solid rgba(255, 255, 255, 0.3));
 }
 
 .project-icon i {
-    font-size: 3em;
-    color: #646464;
-    background: linear-gradient(45deg, #e6e6e6, #ffffff);
-    padding: 20px;
+    font-size: 24px;
+    color: #ffffff;
+    background: var(--icon-bg, #333333);
+    padding: 0;
     border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
     transition: all 0.3s ease;
 }
 
 .project-icon:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--box-shadow-color, rgba(0, 0, 0, 0.4));
+    color: #ffffff;
+    background: var(--icon-hover-bg, #666666);
 }
 
 .project-icon:hover i {
-    color: #2a2a2a;
-    background: linear-gradient(45deg, #ffffff, #f0f0f0);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    color: #ffffff;
+    background: var(--icon-hover-bg, #666666);
+    box-shadow: none;
 }
 
 /* Custom colors for specific icons */
 .fa-church {
-    color: #4a4a4a !important;
+    color: #ffffff !important;
 }
 
 .fa-shield-alt {
-    color: #2d5ba3 !important;
+    color: #ffffff !important;
 }
 
 .fa-stopwatch {
-    color: #e74c3c !important;
+    color: #ffffff !important;
 }
 
 .fa-users {
-    color: #3498db !important;
+    color: #ffffff !important;
 }
 
 .fa-keyboard {
-    color: #2ecc71 !important;
+    color: #ffffff !important;
 }
 
 .fa-folder-open {
-    color: #f39c12 !important;
+    color: #ffffff !important;
 }

@@ -5,37 +5,52 @@
 }
 
 .project-skill-tag {
-    font-size: 0.85em;
+    font-size: 0.8em;
     padding: 0.3em 0.6em;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+    background: var(--skill-tag-bg, #333333);
+    border-radius: 4px;
     color: #ffffff;
     display: inline-block;
     transition: all 0.3s ease;
+    margin: 0.2em;
+    border: var(--project-border, 1px solid rgba(255, 255, 255, 0.3));
 }
 
 .project-skill-tag:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--skill-tag-hover-bg, #666666);
     transform: translateY(-2px);
 }
 
 .project-detail-info h3 {
-    color: #ffffff;
+    color: var(--heading-color, #ffffff);
     font-weight: bold;  
 } 
 
 .project-detail-info {
     font-size: 1.2em;
+    color: var(--text-color, rgba(255, 255, 255, 0.85));
 }
 
 .project-detail {
     height: fit-content;
     overflow-y: auto;
-    margin: 20px;
-    background: rgba(255, 255, 255, 0.05);
+    margin: 0 auto;
+    margin-bottom: 2em;
+    padding: 1.5em;
     border-radius: 10px;
-    padding: 1em;
-    padding-bottom: 0.5em;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: none;
+    max-width: 100%;
+    background: var(--project-bg, rgba(50, 50, 50, 0.5));
+    color: var(--text-color, #ffffff);
+    border: var(--project-border, 1px solid rgba(255, 255, 255, 0.2));
+}
+
+.project-detail.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+    color: var(--text-color, #ffffff);
 }
 
 .project-detail-content {
@@ -57,17 +72,17 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
     max-width: 50%;
 }
 
 .project-detail-image img {
-    max-height: 200px;
     width: 100%;
     height: auto;
-    object-fit: contain;
     border-radius: 8px;
     margin-bottom: 1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: var(--project-border, 1px solid rgba(255, 255, 255, 0.3));
 }
 
 /* Custom scrollbar styling */
@@ -96,28 +111,21 @@
 
 .detail-prev-button,
 .detail-next-button {
-    padding: 0.8em 1.5em;
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    background: var(--project-bg, rgba(50, 50, 50, 0.8));
+    color: var(--text-color, #ffffff);
+    border: var(--project-border, 1px solid rgba(255, 255, 255, 0.3));
     cursor: pointer;
-    transition: all 0.3s ease;
+    margin: 0 0.5em;
     font-size: 0.9em;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    min-width: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transition: all 0.3s ease;
 }
 
 .detail-prev-button:hover,
 .detail-next-button:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--skill-tag-hover-bg, rgba(255, 255, 255, 0.2));
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .detail-prev-button:active,
@@ -151,16 +159,17 @@
 }
 
 .detail-dot {
-    width: 10px;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.3);
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
+    margin: 0 5px;
     cursor: pointer;
+    background: var(--project-border, rgba(255, 255, 255, 0.3));
     transition: background 0.3s ease;
 }
 
 .detail-dot.active {
-    background: #4a90e2;
+    background: var(--text-color, #ffffff);
 }
 
 .project-buttons {
@@ -173,11 +182,15 @@
 
 .project-buttons button {
     padding: 0.5em 1em;
-    background: #4a90e2;
-    color: white;
-    border: none;
+    background: var(--project-bg, #333333);
+    color: var(--text-color, rgba(255, 255, 255, 0.85));
+    border: var(--project-border, 1px solid rgba(255, 255, 255, 0.3));
     border-radius: 5px;
+    margin-right: 0.5em;
     cursor: pointer;
     transition: background 0.3s ease;
-    margin-bottom: 0;
+}
+
+.project-buttons button:hover {
+    background: var(--skill-tag-hover-bg, #666666);
 }

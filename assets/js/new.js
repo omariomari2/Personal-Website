@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleButton.textContent = 'Read More';
             toggleButton.style.background = 'none';
             toggleButton.style.border = 'none';
-            toggleButton.style.color = '#64ffda';
+            toggleButton.style.color = '#ffffff';
             toggleButton.style.cursor = 'pointer';
             toggleButton.style.fontWeight = 'bold';
             toggleButton.style.marginLeft = '5px';
@@ -282,16 +282,49 @@ document.addEventListener('DOMContentLoaded', function() {
                     shortDesc.style.display = 'none';
                     fullDesc.style.display = 'inline';
                     toggleButton.textContent = 'Read Less';
+                    toggleButton.style.color = '#cccccc'; // Lighter color when expanded
                 } else {
                     shortDesc.style.display = 'inline';
                     fullDesc.style.display = 'none';
                     toggleButton.textContent = 'Read More';
+                    toggleButton.style.color = '#ffffff'; // Back to white when collapsed
                 }
             });
             
             // Insert the new elements after the title
             projectInfo.insertBefore(descriptionContainer, skillsDiv);
             projectInfo.insertBefore(toggleButton, skillsDiv);
+        }
+    });
+
+    // Theme Toggle Functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference or default to light theme
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    
+    // Apply the saved theme on page load
+    if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+    
+    // Toggle theme when button is clicked
+    themeToggle.addEventListener('click', function() {
+        // Check current theme
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        
+        if (currentTheme === 'light') {
+            // Switch to dark theme
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            // Switch to light theme
+            document.documentElement.removeAttribute('data-theme');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+            localStorage.setItem('theme', 'light');
         }
     });
 });
